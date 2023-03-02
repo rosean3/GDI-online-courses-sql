@@ -78,11 +78,26 @@ INSERT INTO Aluno
 VALUES (72586163818);
 
 --cursos
-
+INSERT INTO Curso
+VALUES (1, 'Direito Criminal', 12.5, 'Um bom curso de direito criminal', 8.5, 41653193506, 01374995384);
+INSERT INTO Curso
+VALUES (2, 'Direito Trabalhista', 34.5, 'Um ótimo curso de direito trabalhista', 7.9, 41653193506, 24868992106);
+INSERT INTO Curso
+VALUES (3, 'Matémática x Excel', 19.5, 'Matematica aplicada a excel com excelência', 5.5, 65572473286, 01374995384);
+INSERT INTO Curso
+VALUES (4, 'Python, do básico ao avançado', 46.5, 'Python para concursos', 9.5, 01374545384, 01374995384);
+INSERT INTO Curso
+VALUES (5, 'C# intemediário', 78.9, 'C# para concursos nordestinos', 6.7, 01374545384, 24868992106);
+INSERT INTO Curso
+VALUES (6, 'Contabilidade por Estevão Ferreira', 12.3, 'Aprenda contabilidade com o melhor', 15.9, 24868152106, 24868992106);
+INSERT INTO Curso
+VALUES (7, 'Lógica II', 15.99, 'Lógica Aristotélica para concursos federais', 12.6, 54124521596, 24868992106);
 
 
 --testes
 SELECT COUNT(u.nome) FROM Usuario u
 JOIN Aluno aln ON aln.cpf = u.cpf 
+
+select * from Curso
 
 
