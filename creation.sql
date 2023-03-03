@@ -9,13 +9,17 @@ DROP TABLE Educador;
 DROP TABLE Telefone;
 DROP TABLE Endereco;
 DROP TABLE Usuario;
+DROP SEQUENCE endereco_seq;
+DROP SEQUENCE curso_seq;
  
 CREATE TABLE Usuario(
   cpf CHAR(11),
   nome VARCHAR(100),
   CONSTRAINT usuario_pk PRIMARY KEY(cpf)
 );
- 
+
+CREATE SEQUENCE endereco_seq START WITH 1 INCREMENT BY 1;
+
 CREATE TABLE Endereco(
   id INT,
   cep CHAR(8),
@@ -51,6 +55,8 @@ CREATE TABLE Administrador(
   CONSTRAINT administrador_usuario_fk FOREIGN KEY(cpf) REFERENCES Usuario(cpf)
 );
  
+CREATE SEQUENCE curso_seq START WITH 1 INCREMENT BY 1;
+
 CREATE TABLE Curso(
   id INT,
   titulo VARCHAR(300),
