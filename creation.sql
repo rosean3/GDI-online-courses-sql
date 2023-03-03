@@ -96,7 +96,8 @@ CREATE TABLE Assistir(
   cpf_aluno CHAR(11),
   CONSTRAINT assistir_pk PRIMARY KEY(data_hora, cpf_aluno),
   CONSTRAINT assistir_aula_fk FOREIGN KEY(id_curso, n_aula) REFERENCES Aula(id_curso, n_aula),
-  CONSTRAINT assistir_aluno_fk FOREIGN KEY(cpf_aluno) REFERENCES Aluno(cpf)
+  CONSTRAINT assistir_aluno_fk FOREIGN KEY(cpf_aluno) REFERENCES Aluno(cpf),
+  CONSTRAINT assistir_curso_comprado_fk FOREIGN KEY (id_curso, cpf_aluno) REFERENCES Efetuar_Compra (id_curso, cpf_aluno)
 );
  
 CREATE TABLE Presentear(
