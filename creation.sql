@@ -22,8 +22,8 @@ CREATE SEQUENCE endereco_seq START WITH 1 INCREMENT BY 1;
 
 CREATE TABLE Endereco(
   id INT,
-  cep CHAR(8),
   cpf_usuario CHAR(11),
+  cep CHAR(8),  
   numero INT,
   complemento VARCHAR(100),
   CONSTRAINT endereco_pk PRIMARY KEY(id),
@@ -62,13 +62,11 @@ CREATE TABLE Curso(
   titulo VARCHAR(300),
   valor FLOAT,
   descricao VARCHAR(4000),
-  duracao FLOAT,
   cpf_educador CHAR(11),
   cpf_administrador CHAR(11),
   CONSTRAINT curso_pk PRIMARY KEY(id),
   CONSTRAINT curso_educador_fk FOREIGN KEY(cpf_educador) REFERENCES Educador(cpf),
-  CONSTRAINT curso_administrador_fk FOREIGN KEY(cpf_administrador) REFERENCES Administrador(cpf),
-  CONSTRAINT curso_check CHECK (duracao > 5)
+  CONSTRAINT curso_administrador_fk FOREIGN KEY(cpf_administrador) REFERENCES Administrador(cpf)
 );
  
 CREATE TABLE Aula(
@@ -77,7 +75,8 @@ CREATE TABLE Aula(
   titulo VARCHAR(300),
   duracao FLOAT,
   CONSTRAINT aula_pk PRIMARY KEY(id_curso, n_aula),
-  CONSTRAINT aula_curso_fk FOREIGN KEY(id_curso) REFERENCES Curso(id)
+  CONSTRAINT aula_curso_fk FOREIGN KEY(id_curso) REFERENCES Curso(id),
+  CONSTRAINT aula_check CHECK (duracao > 0.5)
 );
  
 CREATE TABLE Efetuar_Compra(

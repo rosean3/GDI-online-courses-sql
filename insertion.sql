@@ -2,7 +2,7 @@
 INSERT INTO Usuario
 VALUES ('63068411050', 'Alfredo');
 INSERT INTO Usuario
-VALUES ('62519332247', 'Laís ');
+VALUES ('62519332247', 'Laís');
 INSERT INTO Usuario
 VALUES ('17654430590', 'Lorenzo');
 INSERT INTO Usuario
@@ -20,7 +20,9 @@ VALUES ('25729844409', 'Alexandre');
 INSERT INTO Usuario
 VALUES ('72586163818', 'Emilly');
 INSERT INTO Usuario
-VALUES ('41653193506', 'Luiz');
+VALUES ('19112162254', 'Silvana');
+INSERT INTO Usuario
+VALUES ('41653193506', 'Luís');
 INSERT INTO Usuario
 VALUES ('65572473286', 'Sophia');
 INSERT INTO Usuario
@@ -30,9 +32,21 @@ VALUES ('24868152106', 'Felipe');
 INSERT INTO Usuario
 VALUES ('01374545384', 'Pedro');
 INSERT INTO Usuario
+VALUES ('39900055015', 'Hugo');
+INSERT INTO Usuario
+VALUES ('55262703730', 'Josué');
+INSERT INTO Usuario
+VALUES ('16022208982', 'Mário');
+INSERT INTO Usuario
 VALUES ('24868992106', 'Eduardo');
 INSERT INTO Usuario
 VALUES ('01374995384', 'Vicente');
+INSERT INTO Usuario
+VALUES ('94157780488', 'Gabriela');
+
+
+
+
 
 
 --admin
@@ -40,6 +54,8 @@ INSERT INTO Administrador
 VALUES ('01374995384');
 INSERT INTO Administrador
 VALUES ('24868992106');
+INSERT INTO Administrador --admin que não validou nenhum curso
+VALUES ('94157780488');
 
 --educadores
 INSERT INTO Educador
@@ -52,6 +68,14 @@ INSERT INTO Educador
 VALUES ('24868152106');
 INSERT INTO Educador
 VALUES ('01374545384');
+INSERT INTO Educador
+VALUES ('39900055015');
+ --educador sem curso
+INSERT INTO Educador
+VALUES ('55262703730');
+ --educador sem curso
+INSERT INTO Educador
+VALUES ('16022208982');
 
 --alunos
 INSERT INTO Aluno
@@ -74,42 +98,53 @@ INSERT INTO Aluno
 VALUES ('25729844409');
 INSERT INTO Aluno
 VALUES ('72586163818');
+INSERT INTO Aluno
+VALUES ('19112162254');
 
 --cursos
 INSERT INTO Curso
-VALUES (curso_seq.NEXTVAL, 'Direito Criminal', 12.5, 'Um bom curso de direito criminal', 8.5, '41653193506', '01374995384');
+VALUES (curso_seq.NEXTVAL, 'Direito Criminal', 12.5, 'Um bom curso de direito criminal', '41653193506', '01374995384');
 INSERT INTO Curso
-VALUES (curso_seq.NEXTVAL, 'Direito Trabalhista', 34.5, 'Um ótimo curso de direito trabalhista', 7.9, '41653193506', '24868992106');
+VALUES (curso_seq.NEXTVAL, 'Direito Trabalhista', 34.5, 'Um ótimo curso de direito trabalhista', '41653193506', '24868992106');
 INSERT INTO Curso
-VALUES (curso_seq.NEXTVAL, 'Matémática x Excel', 19.5, 'Matematica aplicada a excel com excelência', 5.5, '65572473286', '01374995384');
+VALUES (curso_seq.NEXTVAL, 'Matémática x Excel', 19.5, 'Matematica aplicada a excel com excelência', '65572473286', '01374995384');
 INSERT INTO Curso
-VALUES (curso_seq.NEXTVAL, 'Python, do básico ao avançado', 46.5, 'Python para concursos', 9.5, '01374545384', '01374995384');
+VALUES (curso_seq.NEXTVAL, 'Python, do básico ao avançado', 46.5, 'Python para concursos', '01374545384', '01374995384');
 INSERT INTO Curso
-VALUES (curso_seq.NEXTVAL, 'C# intemediário', 78.9, 'C# para concursos nordestinos', 6.7, '01374545384', '24868992106');
+VALUES (curso_seq.NEXTVAL, 'C# intemediário', 78.9, 'C# para concursos nordestinos', '01374545384', '24868992106');
 INSERT INTO Curso
-VALUES (curso_seq.NEXTVAL, 'Contabilidade por Estevão Ferreira', 12.3, 'Aprenda contabilidade com o melhor', 15.9, '24868152106', '24868992106');
+VALUES (curso_seq.NEXTVAL, 'Contabilidade por Estevão Ferreira', 12.3, 'Aprenda contabilidade com o melhor', '24868152106', '24868992106');
 INSERT INTO Curso
-VALUES (curso_seq.NEXTVAL, 'Lógica II', 15.99, 'Lógica Aristotélica para concursos federais', 12.6, '54124521596', '24868992106');
+VALUES (curso_seq.NEXTVAL, 'Lógica II', 15.99, 'Lógica Aristotélica para concursos federais', '54124521596', '24868992106');
+INSERT INTO Curso
+VALUES (curso_seq.NEXTVAL, 'Inteligência Artificial para Iniciantes', 50.0, 'Aprenda os conceitos básicos de IA', '39900055015', '01374995384');
+
+
 
 
 --enderecos
-INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '63068411', '63068411050', 10, NULL);
-INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '62519332', '72586163818', 160, 'Fundos');
-INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '17654430', '25729844409', 20, 'Bloco A, Apt 101');
-INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '12812287', '51581412312', 30, 'Casa 2');
-INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '42880166', '17654430590', 40, 'Sala 1001');
-INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '06445112', '54124521596', 50, 'Loja 3, Piso 2');
-INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '23975024', '06445112650', 60, NULL);
-INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '51581412', '24868992106', 70, 'Fundo');
-INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '25729844', '65572473286', 80, 'Lado direito');
-INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '72586163', '41653193506', 90, NULL);
-INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '41653193', '24868152106', 100, 'Casa 5');
-INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '65572473', '01374545384', 110, NULL);
-INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '54124521', '62519332247', 120, 'Apartamento 401');
-INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '24868152', '12812287454', 170, NULL);
-INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '01374545', '42880166810', 130, 'Bloco B, Apt 201');
-INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '24868992', '23975024887', 140, 'Sala 202');
-INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '01374995', '01374995384', 150, NULL);
+INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '63068411050', '63068411', 10, NULL);
+INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '62519332247', '54124521', 120, 'Apartamento 401');
+INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '17654430590', '42880166', 40, 'Sala 1001');
+INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '12812287454', '24868152', 170, NULL);
+INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '42880166810', '01374545', 130, 'Bloco B, Apt 201');
+INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '06445112650', '42880166', 40, 'Sala 1001');
+INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '23975024887', '24868992', 140, 'Sala 202');
+INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '51581412312', '12812287', 30, 'Casa 2');
+INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '25729844409', '17654430', 20, 'Bloco A, Apt 101');
+INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '72586163818', '62519332', 160, 'Fundos');
+--Silvana
+INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '41653193506', '72586163', 90, NULL);
+INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '65572473286', '25729844', 80, 'Lado direito');
+INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '54124521596', '42880166', 40, 'Sala 2003');
+INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '24868992106', '51581412', 70, 'Fundo');
+INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '01374545384', '65572473', 110, NULL);
+--Hugo
+--Josué
+--Mário
+INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '24868152106', '41653193', 100, 'Casa 5');
+INSERT INTO Endereco VALUES (endereco_seq.NEXTVAL, '01374995384', '01374995', 150, NULL);
+--Gabriela
 
 --telefones
 INSERT INTO Telefone (cpf_usuario, telefone) VALUES ('63068411050', '11111111111');
@@ -170,8 +205,7 @@ INSERT INTO Aula VALUES (7, 3, 'Lógica de predicados', 2.5);
 -- Efetuar_compra
 
 -- Compra 1
-INSERT INTO Efetuar_compra (id_curso, cpf_aluno, data_hora)
-VALUES (1, '63068411050', TO_TIMESTAMP('2022-02-28 10:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+
 
 -- Compra 2
 INSERT INTO Efetuar_compra (id_curso, cpf_aluno, data_hora)
@@ -277,18 +311,17 @@ INSERT INTO Assistir (data_hora, id_curso, n_aula, cpf_aluno)
 VALUES (TO_TIMESTAMP('2023-03-01 11:00:00', 'YYYY-MM-DD HH24:MI:SS'), 4, 3, '72586163818');
 
 -- assiste aula 1 do curso 4
-INSERT INTO Assistir (data_hora, id_curso, n_aula, cpf_aluno)
-VALUES (TO_TIMESTAMP('2023-03-02 13:30:00', 'YYYY-MM-DD HH24:MI:SS'), 1, 1, '63068411050');
+
 
 
 --Presentear
-INSERT INTO Presentear VALUES ('63068411050', '62519332247', 1);
+
 INSERT INTO Presentear VALUES ('12812287454', '51581412312', 2);
 INSERT INTO Presentear VALUES ('25729844409', '17654430590', 3);
 INSERT INTO Presentear VALUES ('72586163818', '23975024887', 4);
 INSERT INTO Presentear VALUES ('51581412312', '06445112650', 5);
 INSERT INTO Presentear VALUES ('23975024887', '12812287454', 6);
 INSERT INTO Presentear VALUES ('42880166810', '72586163818', 1);
-INSERT INTO Presentear VALUES ('63068411050', '17654430590', 2);
+
 INSERT INTO Presentear VALUES ('51581412312', '25729844409', 3);
-INSERT INTO Presentear VALUES ('72586163818', '63068411050', 4);
+
