@@ -151,6 +151,7 @@ INSERT INTO Telefone (cpf_usuario, telefone) VALUES ('63068411050', '11111111111
 INSERT INTO Telefone (cpf_usuario, telefone) VALUES ('62519332247', '22222222222');
 INSERT INTO Telefone (cpf_usuario, telefone) VALUES ('17654430590', '33333333333');
 INSERT INTO Telefone (cpf_usuario, telefone) VALUES ('12812287454', '44444444444');
+INSERT INTO Telefone (cpf_usuario, telefone) VALUES ('12812287454', '44444444442');
 INSERT INTO Telefone (cpf_usuario, telefone) VALUES ('42880166810', '55555555555');
 INSERT INTO Telefone (cpf_usuario, telefone) VALUES ('06445112650', '66666666666');
 INSERT INTO Telefone (cpf_usuario, telefone) VALUES ('23975024887', '77777777777');
