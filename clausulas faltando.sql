@@ -18,6 +18,26 @@ ON Usuario(cpf);
 ALTER TABLE Curso
 ALTER COLUMN Valor FLOAT(30.0);
 
+-- Criar uma visão para listar os cursos e seus educadores
+CREATE VIEW cursos_educadores AS
+SELECT c.titulo, e.nome
+FROM curso c 
+JOIN educador e ON c.cpf_educador = e.cpf
 
+-- Selecionar o aulas de cada curso, filtrando aulas que apenas duram mais de 2.0 horas:
+SELECT c.titulo AS "Curso", COUNT(a.duracao) AS "Num_aulas" 
+FROM Curso c 
+INNER JOIN aula a ON c.id = a.id_curso 
+GROUP BY c.titulo
+HAVING COUNT(a.duracao) > 2.0;
+
+-- Consulta para listar os educadores e seus cursos, bem como os alunos e seus cursos, ordenados pelo nome do usuário em ordem alfabética
+SELECT u.*, c.* 
+FROM Usuario u 
+LEFT JOIN Educador e ON u.cpf = e.cpf 
+LEFT JOIN curso c ON e.cpf = c.cpf_educador 
+UNION 
+SELECT u.*, c.* 
+FROM usuario u
 
 
