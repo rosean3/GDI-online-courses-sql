@@ -12,6 +12,13 @@ create or replace type tp_usuario_endereco as object(
     numero number
 );
  
+create or replace type tp_aula as object(
+	num_da_aula varchar2(30),
+    titulo varchar2(30),
+    duracao varchar2(50),
+    id_curso ref tp_curso
+);
+
 CREATE TYPE tp_usuario_fone AS OBJECT(
 	numero varchar2(30)
 );
