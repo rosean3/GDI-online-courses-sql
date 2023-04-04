@@ -1,28 +1,25 @@
 create or replace type tp_aula as object(
-	num_da_aula varchar2(30),
-    titulo varchar2(30),
-    duracao varchar2(50)
+	num_da_aula int,
+    titulo varchar2(300),
+    duracao float
 );
 /
 
-create or replace type tp_aula_relac as object(
-    aula ref tp_aula
-);
-/
-
-create or replace type tp_nt_aula as table of tp_aula_relac;
+create or replace type tp_lista_aulas as table of tp_aula;
 /
 
 create or replace type tp_curso as object(
-	titulo varchar2(30),
-    valor number,
-    descricao varchar(50),
-    duracao number,
     id number,
+	titulo varchar2(300),
+    valor float,
+    descricao varchar(4000),
     data_hora_publicacao varchar2(20),
-    lista_aulas tp_nt_aula
+    lista_aulas tp_lista_aulas
 );
 /
+
+-- CREATE TABLE tb_curso OF tp_curso NESTED TABLE lista_aulas
+-- STORE AS nt_aulas;
 
 create or replace type tp_curso_relac as object(
     curso ref tp_curso
