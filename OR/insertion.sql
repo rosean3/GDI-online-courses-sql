@@ -160,89 +160,40 @@ INSERT INTO tb_curso (id, titulo, valor, descricao, lista_aulas, educador, admin
     (SELECT REF(e) FROM tb_educador e WHERE e.cpf = '18409941996'),
     (SELECT REF(a) FROM tb_administrador a WHERE a.cpf = '43846654031')
 );
--- -------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 INSERT INTO tb_curso (id, titulo, valor, descricao, lista_aulas, educador, administrador) VALUES (
     8,
-    'Direito Trabalhista',
-    12.50,
-    'Um ótimo curso de direito trabalhista.',
+    'Lógica II',
+    15.99,
+    'Lógica Aristotélica para concursos federais.',
     tp_lista_aulas(
-        tp_aula(1, 'Introdução ao Direito do Trabalho', 2.5),
-        tp_aula(2, 'Contratos de trabalho', 3.0), 
-        tp_aula(3, 'Rescisão do contrato de trabalho', 4.5)
+        tp_aula(1, 'Conceitos básicos de lógica', 1.0),
+        tp_aula(2, 'Lógica proposicional', 2.5), 
+        tp_aula(3, 'Lógica de predicados', 2.5)
     ),
-    (SELECT REF(e) FROM tb_educador e WHERE e.cpf = '90399870064'),
-    (SELECT REF(a) FROM tb_administrador a WHERE a.cpf = '66046090696')
+    (SELECT REF(e) FROM tb_educador e WHERE e.cpf = '42993006152'),
+    (SELECT REF(a) FROM tb_administrador a WHERE a.cpf = '47680877364')
 );
 
 INSERT INTO tb_curso (id, titulo, valor, descricao, lista_aulas, educador, administrador) VALUES (
     9,
-    'Direito Trabalhista',
+    'Inteligência Artificial para Iniciantes',
     12.50,
-    'Um ótimo curso de direito trabalhista.',
-    tp_lista_aulas(
-        tp_aula(1, 'Introdução ao Direito do Trabalho', 2.5),
-        tp_aula(2, 'Contratos de trabalho', 3.0), 
-        tp_aula(3, 'Rescisão do contrato de trabalho', 4.5)
-    ),
-    (SELECT REF(e) FROM tb_educador e WHERE e.cpf = '90399870064'),
-    (SELECT REF(a) FROM tb_administrador a WHERE a.cpf = '66046090696')
+    'Aprenda os conceitos básicos de IA.',
+    NULL,
+    (SELECT REF(e) FROM tb_educador e WHERE e.cpf = '00000000001'),
+    (SELECT REF(a) FROM tb_administrador a WHERE a.cpf = '43846654031')
 );
 
 INSERT INTO tb_curso (id, titulo, valor, descricao, lista_aulas, educador, administrador) VALUES (
     10,
-    'Direito Trabalhista',
+    'Jogo do Bicho 101',
     12.50,
-    'Um ótimo curso de direito trabalhista.',
-    tp_lista_aulas(
-        tp_aula(1, 'Introdução ao Direito do Trabalho', 2.5),
-        tp_aula(2, 'Contratos de trabalho', 3.0), 
-        tp_aula(3, 'Rescisão do contrato de trabalho', 4.5)
-    ),
-    (SELECT REF(e) FROM tb_educador e WHERE e.cpf = '90399870064'),
+    'Se torne aprendiz do Zeca Pagodinho.',
+    NULL,
+    (SELECT REF(e) FROM tb_educador e WHERE e.cpf = '00000000001'),
     (SELECT REF(a) FROM tb_administrador a WHERE a.cpf = '66046090696')
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 --inserindo em tb_efetuar_compra
 
@@ -253,68 +204,152 @@ INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALU
 TO_TIMESTAMP('2023-04-05 15:30:00', 'YYYY-MM-DD HH24:MI:SS')
 );
 
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 3),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '26419720291'),
+TO_TIMESTAMP('2022-04-30 11:30:20', 'YYYY-MM-DD HH24:MI:SS')
+);
 
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 4),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '21475327332'),
+TO_TIMESTAMP('2023-02-12 11:30:20', 'YYYY-MM-DD HH24:MI:SS')
+);
 
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 5),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '21475327332'),
+TO_TIMESTAMP('2023-02-12 11:32:45', 'YYYY-MM-DD HH24:MI:SS')
+);
 
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 2),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '87829442544'),
+TO_TIMESTAMP('2023-01-24 18:42:34', 'YYYY-MM-DD HH24:MI:SS')
+);
 
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 10),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '86291960821'),
+TO_TIMESTAMP('2023-01-02 03:21:14', 'YYYY-MM-DD HH24:MI:SS')
+);
 
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 7),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '32274181942'),
+TO_TIMESTAMP('2022-12-07 08:26:00', 'YYYY-MM-DD HH24:MI:SS')
+);
 
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 8),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '32274181942'),
+TO_TIMESTAMP('2023-01-03 13:41:10', 'YYYY-MM-DD HH24:MI:SS')
+);
 
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 6),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '66402019823'),
+TO_TIMESTAMP('2023-02-17 11:21:00', 'YYYY-MM-DD HH24:MI:SS')
+);
 
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 9),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '10918637289'),
+TO_TIMESTAMP('2023-02-12 11:17:00', 'YYYY-MM-DD HH24:MI:SS')
+);
 
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 1),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '10918637289'),
+TO_TIMESTAMP('2023-02-12 11:19:00', 'YYYY-MM-DD HH24:MI:SS')
+);
 
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 2),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '10918637289'),
+TO_TIMESTAMP('2023-02-12 11:20:00', 'YYYY-MM-DD HH24:MI:SS')
+);
 
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 10),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '10918637289'),
+TO_TIMESTAMP('2023-02-12 11:21:00', 'YYYY-MM-DD HH24:MI:SS')
+);
 
---inserindo em tb_assistir
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 4),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '87387698251'),
+TO_TIMESTAMP('2023-03-13 13:22:55', 'YYYY-MM-DD HH24:MI:SS')
+);
 
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 8),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '87387698251'),
+TO_TIMESTAMP('2023-02-01 09:21:20', 'YYYY-MM-DD HH24:MI:SS')
+);
 
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 7),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '87387698251'),
+TO_TIMESTAMP('2022-12-12 12:12:12', 'YYYY-MM-DD HH24:MI:SS')
+);
 
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 10),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '86298332544'),
+TO_TIMESTAMP('2022-12-31 11:12:12', 'YYYY-MM-DD HH24:MI:SS')
+);
 
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 4),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '86298332544'),
+TO_TIMESTAMP('2023-01-01 17:55:03', 'YYYY-MM-DD HH24:MI:SS')
+);
 
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 8),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '11936476244'),
+TO_TIMESTAMP('2023-01-31 17:54:03', 'YYYY-MM-DD HH24:MI:SS')
+);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 9),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '11936476244'),
+TO_TIMESTAMP('2023-02-26 14:51:43', 'YYYY-MM-DD HH24:MI:SS')
+);
 
 --inserindo em tb_presentear_curso
 
 INSERT INTO tb_presentear_curso (id_pc, aluno_presenteado, aluno_presenteador, curso) VALUES (
 1,
-(SELECT REF(a1) FROM tb_aluno a1 WHERE a1.cpf = '32274181942'),
-(SELECT REF(a2) FROM tb_aluno a2 WHERE a2.cpf = '66402019823'),
+(SELECT REF(a1) FROM tb_aluno a1 WHERE a1.cpf = '13451468741'),
+(SELECT REF(a2) FROM tb_aluno a2 WHERE a2.cpf = '26419720291'),
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 2)
 );
 
 INSERT INTO tb_presentear_curso (id_pc, aluno_presenteado, aluno_presenteador, curso) VALUES (
 2,
-(SELECT REF(a1) FROM tb_aluno a1 WHERE a1.cpf = '32274181942'),
-(SELECT REF(a2) FROM tb_aluno a2 WHERE a2.cpf = '66402019823'),
+(SELECT REF(a1) FROM tb_aluno a1 WHERE a1.cpf = '26419720291'),
+(SELECT REF(a2) FROM tb_aluno a2 WHERE a2.cpf = '13451468741'),
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 2)
 );
 
@@ -327,35 +362,38 @@ INSERT INTO tb_presentear_curso (id_pc, aluno_presenteado, aluno_presenteador, c
 
 INSERT INTO tb_presentear_curso (id_pc, aluno_presenteado, aluno_presenteador, curso) VALUES (
 4,
-(SELECT REF(a1) FROM tb_aluno a1 WHERE a1.cpf = '32274181942'),
-(SELECT REF(a2) FROM tb_aluno a2 WHERE a2.cpf = '66402019823'),
+(SELECT REF(a1) FROM tb_aluno a1 WHERE a1.cpf = '21475327332'),
+(SELECT REF(a2) FROM tb_aluno a2 WHERE a2.cpf = '86291960821'),
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 5)
 );
 
 INSERT INTO tb_presentear_curso (id_pc, aluno_presenteado, aluno_presenteador, curso) VALUES (
 5,
-(SELECT REF(a1) FROM tb_aluno a1 WHERE a1.cpf = '32274181942'),
-(SELECT REF(a2) FROM tb_aluno a2 WHERE a2.cpf = '66402019823'),
+(SELECT REF(a1) FROM tb_aluno a1 WHERE a1.cpf = '66402019823'),
+(SELECT REF(a2) FROM tb_aluno a2 WHERE a2.cpf = '87829442544'),
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 2)
 );
 
 INSERT INTO tb_presentear_curso (id_pc, aluno_presenteado, aluno_presenteador, curso) VALUES (
 6,
-(SELECT REF(a1) FROM tb_aluno a1 WHERE a1.cpf = '32274181942'),
-(SELECT REF(a2) FROM tb_aluno a2 WHERE a2.cpf = '66402019823'),
+(SELECT REF(a1) FROM tb_aluno a1 WHERE a1.cpf = '10918637289'),
+(SELECT REF(a2) FROM tb_aluno a2 WHERE a2.cpf = '87387698251'),
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 4)
 );
 
 INSERT INTO tb_presentear_curso (id_pc, aluno_presenteado, aluno_presenteador, curso) VALUES (
 7,
-(SELECT REF(a1) FROM tb_aluno a1 WHERE a1.cpf = '32274181942'),
-(SELECT REF(a2) FROM tb_aluno a2 WHERE a2.cpf = '66402019823'),
+(SELECT REF(a1) FROM tb_aluno a1 WHERE a1.cpf = '11936476244'),
+(SELECT REF(a2) FROM tb_aluno a2 WHERE a2.cpf = '86291960821'),
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 2)
 );
 
 INSERT INTO tb_presentear_curso (id_pc, aluno_presenteado, aluno_presenteador, curso) VALUES (
 8,
-(SELECT REF(a1) FROM tb_aluno a1 WHERE a1.cpf = '32274181942'),
-(SELECT REF(a2) FROM tb_aluno a2 WHERE a2.cpf = '66402019823'),
+(SELECT REF(a1) FROM tb_aluno a1 WHERE a1.cpf = '10918637289'),
+(SELECT REF(a2) FROM tb_aluno a2 WHERE a2.cpf = '86298332544'),
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 3)
 );
+
+
+--inserindo em tb_assistir
