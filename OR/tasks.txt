@@ -7,3 +7,13 @@ Heitor:
 [] final member
 [] value
 
+Bruno (povoamento):
+
+[ok] tb_aluno
+[ok] tb_educador
+[ok] tb_administrador
+[ok~] tb_curso
+[ok~] tb_efetuar_compra
+[] tb_assistir
+[] tb_presentear_curso
+

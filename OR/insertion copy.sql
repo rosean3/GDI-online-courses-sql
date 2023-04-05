@@ -1,34 +1,38 @@
---inserindo em tb_aluno
+-- Inserção de curso
+INSERT INTO tb_curso (id, titulo, valor, descricao, lista_aulas, educador, administrador) VALUES (
+1,
+'Introdução ao Python',
+120.00,
+'Curso de introdução a programação em Python',
+tp_lista_aulas(tp_aula(1, 'Instalação do Python', 1.5), tp_aula(2, 'Variáveis e Tipos de Dados', 2.0), tp_aula(3, 'Condicionais e Loops', 3.5), tp_aula(4, 'Funções', 2.5), tp_aula(5, 'Módulos', 1.5)),
+(SELECT REF(e) FROM tb_educador e WHERE e.cpf = '12345678901'),
+(SELECT REF(a) FROM tb_administrador a WHERE a.cpf = '98765432109')
+);
 
-INSERT INTO tb_aluno (cpf, nome, endereco, lista_fones) VALUES ('13451468741', 'Mario', tp_usuario_endereco('Bloco C', '85370453', 42), tp_usuario_fones(tp_usuario_fone('49473798353')));
+-- Inserção de lista de aulas em um curso
+UPDATE tb_curso SET lista_aulas = tp_lista_aulas(tp_aula(1, 'Instalação do Python', 1.5), tp_aula(2, 'Variáveis e Tipos de Dados', 2.0), tp_aula(3, 'Condicionais e Loops', 3.5), tp_aula(4, 'Funções', 2.5), tp_aula(5, 'Módulos', 1.5)) WHERE id = 1;
 
-INSERT INTO tb_aluno (cpf, nome, endereco, lista_fones) VALUES ('26419720291', 'Rui', tp_usuario_endereco('Apartamento 202', '85370453', 4), tp_usuario_fones(tp_usuario_fone('74554869342')));
+-- Inserção de uma aula em um curso
+DECLARE
+curso_ref REF tp_curso;
+BEGIN
+SELECT REF(c) INTO curso_ref FROM tb_curso c WHERE c.id = 1 FOR UPDATE;
+curso_ref.add_aula(6, 'Classes e Objetos', 4.0);
+UPDATE tb_curso SET lista_aulas = curso_ref.lista_aulas WHERE id = 1;
+END;
 
-INSERT INTO tb_aluno (cpf, nome, endereco, lista_fones) VALUES ('21475327332', 'Leticia', tp_usuario_endereco(NULL, '85246150', 13), tp_usuario_fones(tp_usuario_fone('88758595463'), tp_usuario_fone('67710687600')));
+-- Inserção de efetuar compra
+INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
+1,
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 1),
+(SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '13451468741'),
+TO_TIMESTAMP('2023-04-05 15:30:00', 'YYYY-MM-DD HH24:MI:SS')
+);
 
-INSERT INTO tb_aluno (cpf, nome, endereco, lista_fones) VALUES ('87829442544', 'Rafael', tp_usuario_endereco('Bloco 3', '38489172', 12), tp_usuario_fones(tp_usuario_fone('83943873983')));
-
-INSERT INTO tb_aluno (cpf, nome, endereco, lista_fones) VALUES ('86291960821', 'Maria', tp_usuario_endereco('Apartamento 402', '11196898', 4), tp_usuario_fones(tp_usuario_fone('28449310507')));
-
-INSERT INTO tb_aluno (cpf, nome, endereco, lista_fones) VALUES ('32274181942', 'Katia', tp_usuario_endereco('Bloco C', '84513522', 1), tp_usuario_fones(tp_usuario_fone('60903915891')));
-
-INSERT INTO tb_aluno (cpf, nome, endereco, lista_fones) VALUES ('66402019823', 'Barbara', tp_usuario_endereco(NULL, '46407908', 4), tp_usuario_fones(tp_usuario_fone('19072354622'), tp_usuario_fone('92914517633')));
-
-INSERT INTO tb_aluno (cpf, nome, endereco, lista_fones) VALUES ('10918637289', 'Marcelo', tp_usuario_endereco('1104', '23745093', 1), tp_usuario_fones(tp_usuario_fone('57429170002'), tp_usuario_fone('73117579487')));
-
-INSERT INTO tb_aluno (cpf, nome, endereco, lista_fones) VALUES ('87387698251', 'Ernesto', tp_usuario_endereco(NULL, '88379717', NULL), tp_usuario_fones(tp_usuario_fone('57625705738'), tp_usuario_fone('26409745131')));
-
-INSERT INTO tb_aluno (cpf, nome, endereco, lista_fones) VALUES ('86298332544', 'Beatrice', tp_usuario_endereco(NULL, '87801111', NULL), tp_usuario_fones(tp_usuario_fone('32717751523')));
-
-INSERT INTO tb_aluno (cpf, nome, endereco, lista_fones) VALUES ('11936476244', 'Robson', tp_usuario_endereco('Apartamento 1104', '21791174', 1), tp_usuario_fones(tp_usuario_fone('51485148493')));
-
-INSERT INTO tb_aluno (cpf, nome, endereco, lista_fones) VALUES ('73964907123', 'Alice', tp_usuario_endereco(NULL, '16655300', 13), tp_usuario_fones(tp_usuario_fone('33317203735')));
-
-INSERT INTO tb_aluno (cpf, nome, endereco, lista_fones) VALUES ('47680877364', 'Matheus', tp_usuario_endereco('Bloco 2', '10562321', 12), tp_usuario_fones(tp_usuario_fone('98451784511')));
-
-INSERT INTO tb_aluno (cpf, nome, endereco, lista_fones) VALUES ('66046090696', 'Gabriel', tp_usuario_endereco('Apartamento 602', '11387378', 4), tp_usuario_fones(tp_usuario_fone('69692040093')));
-
-INSERT INTO tb_aluno (cpf, nome, endereco, lista_fones) VALUES ('81206614383', 'Eulalia', tp_usuario_endereco('Bloco E', '12272583', 1), tp_usuario_fones(tp_usuario_fone('52831167612'), tp_usuario_fone('73388513183'), tp_usuario_fone('84725873884')));
-
-INSERT INTO tb_aluno (cpf, nome, endereco, lista_fones) VALUES ('43846654031', 'Luiz', tp_usuario_endereco(NULL, '88054179', 4), tp_usuario_fones(tp_usuario_fone('5604356058'), tp_usuario_fone('85428572608'), tp_usuario_fone('36591697904')));
-
+-- Inserção de assistir aula
+INSERT INTO tb_assistir (id_as, aula_as, aluno_as, data_hora_assistir) VALUES (
+1,
+(SELECT REF(a) FROM tb_curso c, TABLE(c.lista_aulas) a WHERE c.id = 1 AND a.num_da_aula = 1),
+(SELECT REF(a) FROM tb_usuario a WHERE a.cpf = '11122233344'),
+TO_TIMESTAMP('2023-04-05 15:30:00', 'YYYY-MM-DD HH24:MI:SS')
+);

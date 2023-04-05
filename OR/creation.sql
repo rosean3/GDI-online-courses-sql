@@ -36,6 +36,14 @@ CREATE TABLE tb_efetuar_compra of tp_efetuar_compra(
 );
 /
 
+CREATE TABLE tb_presentear_curso of tp_presentear_curso(
+	id_pc PRIMARY KEY,
+	aluno_presenteado WITH ROWID REFERENCES tb_aluno,
+    aluno_presenteador WITH ROWID REFERENCES tb_aluno,
+	curso WITH ROWID REFERENCES tb_curso
+);
+/
+
 CREATE TABLE tb_assistir of tp_assistir(
 	id_as PRIMARY KEY,
 	aluno_as WITH ROWID REFERENCES tb_aluno
@@ -44,10 +52,3 @@ CREATE TABLE tb_assistir of tp_assistir(
 );
 /
 
-CREATE TABLE tb_presentear_curso of tp_presentear_curso(
-	id_pc PRIMARY KEY,
-	aluno_presenteado WITH ROWID REFERENCES tb_aluno,
-    aluno_presenteador WITH ROWID REFERENCES tb_aluno,
-	curso WITH ROWID REFERENCES tb_curso
-);
-/

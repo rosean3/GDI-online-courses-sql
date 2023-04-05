@@ -122,11 +122,11 @@ create or replace type tp_curso as object(
     valor float,
     descricao varchar2(4000),
     lista_aulas tp_lista_aulas,
-    data_hora_publicacao varchar2(20), -- relacionamento publicar
+
     educador ref tp_educador, -- relacionamento publicar
     administrador ref tp_administrador, -- relacionamento publicar
-    FINAL MAP MEMBER FUNCTION compareByPrice RETURN NUMBER,
-    member procedure add_aula (num_da_aula int, titulo varchar2, duracao float)
+    MAP MEMBER FUNCTION compareByPrice RETURN NUMBER,
+    final member procedure add_aula (num_da_aula int, titulo varchar2, duracao float)
 
 );
 /
@@ -137,7 +137,7 @@ CREATE OR REPLACE TYPE BODY tp_curso AS
         RETURN valor;
     END compareByPrice; 
 	
-    member procedure add_aula (num_da_aula int, titulo varchar2, duracao float) is
+    final member procedure add_aula (num_da_aula int, titulo varchar2, duracao float) is
     BEGIN
         lista_aulas.extend;
         lista_aulas(lista_aulas.last) := tp_aula(num_da_aula, titulo, duracao);

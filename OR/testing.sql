@@ -105,3 +105,21 @@ BEGIN
     u.detail_user;
 END;
 /
+
+--checar numeros de telefone de um usuario:
+
+DECLARE
+    a tp_aluno;
+BEGIN
+     -- select the curso object instance into the c variable
+    select value(d) into a from tb_aluno d where d.cpf = '66402019823';
+
+    --loop for testing the member procedure -> prints every element of the nested table
+    FOR i IN a.lista_fones.FIRST .. a.lista_fones.LAST LOOP
+            dbms_output.put_line('Fone ' || i || ': ' || a.lista_fones(i).numero);
+    END LOOP;
+END;
+/
+
+
+-- ! VALUE + FINAL
