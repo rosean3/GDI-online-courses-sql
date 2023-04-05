@@ -1,0 +1,9 @@
+av5 - my checlist
+
+Heitor:
+[ok] member procedure
+[ok] member function
+[ok] overriding member
+[] final member
+[] value
+
