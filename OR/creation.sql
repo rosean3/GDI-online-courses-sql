@@ -52,3 +52,4 @@ CREATE TABLE tb_assistir of tp_assistir(
 );
 /
 
+CREATE SEQUENCE efetuar_compra_seq START WITH 1 INCREMENT BY 1;

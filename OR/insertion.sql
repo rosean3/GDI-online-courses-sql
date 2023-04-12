@@ -198,140 +198,140 @@ INSERT INTO tb_curso (id, titulo, valor, descricao, lista_aulas, educador, admin
 --inserindo em tb_efetuar_compra
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 1),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '13451468741'),
 TO_TIMESTAMP('2023-04-05 15:30:00', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 3),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '26419720291'),
 TO_TIMESTAMP('2022-04-30 11:30:20', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 4),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '21475327332'),
 TO_TIMESTAMP('2023-02-12 11:30:20', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 5),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '21475327332'),
 TO_TIMESTAMP('2023-02-12 11:32:45', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 2),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '87829442544'),
 TO_TIMESTAMP('2023-01-24 18:42:34', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 10),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '86291960821'),
 TO_TIMESTAMP('2023-01-02 03:21:14', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 7),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '32274181942'),
 TO_TIMESTAMP('2022-12-07 08:26:00', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 8),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '32274181942'),
 TO_TIMESTAMP('2023-01-03 13:41:10', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 6),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '66402019823'),
 TO_TIMESTAMP('2023-02-17 11:21:00', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 9),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '10918637289'),
 TO_TIMESTAMP('2023-02-12 11:17:00', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 1),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '10918637289'),
 TO_TIMESTAMP('2023-02-12 11:19:00', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 2),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '10918637289'),
 TO_TIMESTAMP('2023-02-12 11:20:00', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 10),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '10918637289'),
 TO_TIMESTAMP('2023-02-12 11:21:00', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 4),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '87387698251'),
 TO_TIMESTAMP('2023-03-13 13:22:55', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 8),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '87387698251'),
 TO_TIMESTAMP('2023-02-01 09:21:20', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 7),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '87387698251'),
 TO_TIMESTAMP('2022-12-12 12:12:12', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 10),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '86298332544'),
 TO_TIMESTAMP('2022-12-31 11:12:12', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 4),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '86298332544'),
 TO_TIMESTAMP('2023-01-01 17:55:03', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 8),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '11936476244'),
 TO_TIMESTAMP('2023-01-31 17:54:03', 'YYYY-MM-DD HH24:MI:SS')
 );
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
-1,
+efetuar_compra_seq.NEXTVAL,
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 9),
 (SELECT REF(a) FROM tb_aluno a WHERE a.cpf = '11936476244'),
 TO_TIMESTAMP('2023-02-26 14:51:43', 'YYYY-MM-DD HH24:MI:SS')
