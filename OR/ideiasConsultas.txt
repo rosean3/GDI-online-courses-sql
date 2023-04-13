@@ -1,6 +1,8 @@
 =============================== BRUNOVSKY ==============================
 -Consultar a média de preço dos cursos dos educadores com mais de um telefone. em seguida, comparar com a média de preços dos cursos desses educadores com a média de preços de todos os cursos, calculando a variância (em percentagem) -> VARRAY
--Consultar  
+-Consultar os telefones dos administradores que estão administrando pelo menos um curso -> VARRAY + REF()
+-Consultar a quantidade de vezes que aparece cada um dos dígitos de 0 a 9 nos telefones dos professores que ministram mais de um curso -> VARRAY
+-Consultar os telefones dos alunos que compraram mais de um curso e selecionar a média do número de telefones destes -> VARRAY
 
 
 
