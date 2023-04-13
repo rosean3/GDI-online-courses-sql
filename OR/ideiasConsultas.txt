@@ -5,12 +5,6 @@
 -Consultar os telefones dos alunos que compraram mais de um curso e selecionar a média do número de telefones destes -> VARRAY
 
 
-
-
-
-
-
-
 ================================= HEITOR ================================
 - preço por hora ou minuto -> iterar sobre a nested de lista aula converte pra minutos, soma, pega esse valor e faz a divisão pelo preço -> NT + min_convert
 - mostrar dados do professor que tem a pior média de tempo/curso -> NT, deref
@@ -18,6 +12,10 @@
 - mostrar telefones dos alunos que gastaram mais dinheiro (dinheiro/tempo de aula do curso) -> varray
 
 
+================================= EDU ===================================
+- verifica se o educador com cpf 01731334917 tem pelo menos um curso vinculado a ele -> REF e DEREF
+- mostrar número, título e duração das aulas associadas ao curso com ID igual a 1 -> NESTED TABLE
+- mostrar os CPFs e os números de telefone de todos os alunos presentes na tabela tb_aluno -> VARRAY
 
 ========================= CHEKLIST
 SELECT REF 
