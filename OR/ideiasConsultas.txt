@@ -1,0 +1,24 @@
+=============================== BRUNOVSKY ==============================
+-Consultar a média de preço dos cursos dos educadores com mais de um telefone. em seguida, comparar com a média de preços dos cursos desses educadores com a média de preços de todos os cursos, calculando a variância (em percentagem) -> VARRAY
+-Consultar  
+
+
+
+
+
+
+
+
+================================= HEITOR ================================
+- preço por hora ou minuto -> iterar sobre a nested de lista aula converte pra minutos, soma, pega esse valor e faz a divisão pelo preço -> NT + min_convert
+- mostrar dados do professor que tem a pior média de tempo/curso -> NT, deref
+- adicionar aula no curso mais caro com o menor tempo -> add_aula, NT, compare by Price
+- mostrar telefones dos alunos que gastaram mais dinheiro (dinheiro/tempo de aula do curso) -> varray
+
+
+
+========================= CHEKLIST
+SELECT REF 
+SELECT DEREF 
+CONSULTA À VARRAY 
+CONSULTA À NESTED TABLE 
