@@ -212,10 +212,3 @@ BEGIN
     END LOOP;
 END;
 /
-
-SELECT DISTINCT a.cpf, a.nome
-FROM tb_administrador a
-INNER JOIN tb_curso c 
-    ON DEREF(c.administrador).cpf = a.cpf;
-
-    
