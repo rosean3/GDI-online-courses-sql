@@ -1,5 +1,5 @@
 -- verifica se o educador com cpf 01731334917 tem pelo menos um curso vinculado a ele 
-SELECT DEREF(REF(e))
+SELECT DEREF(REF(e)).nome
 FROM tb_educador e
 WHERE e.cpf = '01731334917'
 AND (
@@ -24,3 +24,22 @@ WHERE c.id = 1;
 SELECT a.cpf, f.numero
 FROM tb_aluno a, TABLE(a.lista_fones) f;
 /
+
+-- mostrar o valor do curso mais caro e o seu educador
+select C.valor AS valorDoCurso, DEREF(C.educador).nome AS educador
+    from tb_curso C
+    WHERE ROWNUM = 1
+    order by C.compareByPrice() DESC;
+
+-- ver o total de horas das aulas do curso 'Curso de Inglês' mais barato
+SELECT SUM(T.duracao) FROM TABLE (
+    SELECT C.lista_aulas
+    	FROM tb_curso C 
+    	WHERE C.valor = (select MIN(C.valor)
+    						from tb_curso C
+    						WHERE C.titulo = 'Curso de Inglês'
+    					)
+    	AND C.titulo = 'Curso de Inglês'
+    	)
+    T
+    ;

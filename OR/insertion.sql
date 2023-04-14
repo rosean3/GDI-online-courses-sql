@@ -195,6 +195,20 @@ INSERT INTO tb_curso (id, titulo, valor, descricao, lista_aulas, educador, admin
     (SELECT REF(a) FROM tb_administrador a WHERE a.cpf = '66046090696')
 );
 
+
+INSERT INTO tb_curso (id, titulo, valor, descricao, lista_aulas, educador, administrador) VALUES (
+    11,
+    'Curso de Inglês',
+    100.00,
+    'Este curso ensina o básico do idioma inglês.',
+    tp_lista_aulas(
+        tp_aula(1, 'Introdução ao Inglês', 4.0),
+        tp_aula(2, 'Vocabulário Básico', 4.5)
+    ),
+    (SELECT REF(e) FROM tb_educador e WHERE e.cpf = '00000000001'),
+    (SELECT REF(a) FROM tb_administrador a WHERE a.cpf = '66046090696')
+);
+
 --inserindo em tb_efetuar_compra
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
