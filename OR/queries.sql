@@ -105,3 +105,38 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE(c.titulo || ': ' || v_total_minutos);
   END LOOP;
 END;
+
+--Consultar a média de preço dos cursos dos educadores com mais de um telefone
+
+--Funcao para caluclar a media de precos dos curso de um educador
+CREATE OR REPLACE FUNCTION get_media_preco(p_cpf IN VARCHAR2)
+RETURN NUMBER
+IS
+    v_media_preco NUMBER;
+BEGIN
+    SELECT AVG(c.valor) INTO v_media_preco
+    FROM tb_curso c
+    WHERE DEREF(c.educador).cpf = p_cpf;
+    
+    RETURN v_media_preco;
+END;
+/
+--Procedimento para imprimir as medias de preco dos cursos dos educadores com mais de um telefone
+BEGIN
+    DECLARE
+        v_media_preco NUMBER;
+    BEGIN
+
+        FOR rec IN (SELECT E.cpf, COUNT(Ef.numero) AS count_numero
+                    FROM tb_educador E
+                    CROSS JOIN TABLE(E.lista_fones) Ef
+                    GROUP BY E.cpf
+                    HAVING COUNT(Ef.numero) > 1)
+        LOOP
+    
+        	v_media_preco := get_media_preco(rec.cpf);
+            DBMS_OUTPUT.PUT_LINE('Nome do Educador: ' || rec.cpf || ', Media de Preco dos Cursos: ' || v_media_preco);
+        END LOOP;
+    END;
+END;
+/
