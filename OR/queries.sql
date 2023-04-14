@@ -140,3 +140,36 @@ BEGIN
     END;
 END;
 /
+
+--Consultar os telefones dos administradores que estão administrando pelo menos um curso
+
+DECLARE
+    v_lista_fones tp_usuario_fones;
+
+BEGIN
+    
+    FOR admin IN (SELECT DISTINCT a.cpf, a.nome
+                  FROM tb_administrador a
+                  INNER JOIN tb_curso c 
+                      ON DEREF(c.administrador).cpf = a.cpf) 
+	LOOP
+        DBMS_OUTPUT.PUT_LINE('Nome: '|| admin.nome ||' | CPF: ' || admin.cpf);
+		SELECT lista_fones INTO v_lista_fones FROM tb_administrador where cpf = admin.cpf;
+        IF v_lista_fones IS NULL THEN
+            DBMS_OUTPUT.PUT_LINE('NULL');
+        ELSE
+            FOR i IN v_lista_fones.FIRST..v_lista_fones.LAST LOOP
+                DBMS_OUTPUT.PUT_LINE('Telefone ' || i || ': ' || v_lista_fones(i).numero);
+            END LOOP;
+        END IF;
+        DBMS_OUTPUT.PUT_LINE('--------------------------------------');
+    END LOOP;
+END;
+/
+
+SELECT DISTINCT a.cpf, a.nome
+FROM tb_administrador a
+INNER JOIN tb_curso c 
+    ON DEREF(c.administrador).cpf = a.cpf;
+
+    
