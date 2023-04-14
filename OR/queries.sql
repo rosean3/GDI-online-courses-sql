@@ -92,3 +92,16 @@ FROM tb_curso c, TABLE(c.lista_aulas) a
 GROUP BY c.id, c.titulo
 ORDER BY SUM(a.duracao))
 where rownum =1;
+
+
+-- retorna o nome do curso e ao lado a duração do curso com base na soma do tempo das aulas em minutos
+DECLARE
+  v_total_minutos FLOAT;
+BEGIN
+  FOR c IN (SELECT * FROM tb_curso)
+  LOOP
+    select SUM(a.min_convert()) into v_total_minutos from table (c.lista_aulas) a;
+    
+    DBMS_OUTPUT.PUT_LINE(c.titulo || ': ' || v_total_minutos);
+  END LOOP;
+END;
