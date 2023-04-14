@@ -209,6 +209,19 @@ INSERT INTO tb_curso (id, titulo, valor, descricao, lista_aulas, educador, admin
     (SELECT REF(a) FROM tb_administrador a WHERE a.cpf = '66046090696')
 );
 
+INSERT INTO tb_curso (id, titulo, valor, descricao, lista_aulas, educador, administrador) VALUES (
+    12,
+    'Curso de Francês',
+    100.00,
+    'Este curso ensina o básico do idioma inglês.',
+    tp_lista_aulas(
+        tp_aula(1, 'Introdução ao Francês', 2.0),
+        tp_aula(1, 'Vocabulário Básico', 2.0)
+    ),
+    (SELECT REF(e) FROM tb_educador e WHERE e.cpf = '00000000001'),
+    (SELECT REF(a) FROM tb_administrador a WHERE a.cpf = '66046090696')
+);
+
 --inserindo em tb_efetuar_compra
 
 INSERT INTO tb_efetuar_compra (id_ec, curso_ec, aluno_ec, data_hora_compra) VALUES (
@@ -407,6 +420,13 @@ INSERT INTO tb_presentear_curso (id_pc, aluno_presenteado, aluno_presenteador, c
 (SELECT REF(a1) FROM tb_aluno a1 WHERE a1.cpf = '10918637289'),
 (SELECT REF(a2) FROM tb_aluno a2 WHERE a2.cpf = '86298332544'),
 (SELECT REF(c) FROM tb_curso c WHERE c.id = 3)
+);
+
+INSERT INTO tb_presentear_curso (id_pc, aluno_presenteado, aluno_presenteador, curso) VALUES (
+9,
+(SELECT REF(a1) FROM tb_aluno a1 WHERE a1.cpf = '10918637289'),
+(SELECT REF(a2) FROM tb_aluno a2 WHERE a2.cpf = '86298332544'),
+(SELECT REF(c) FROM tb_curso c WHERE c.id = 7)
 );
 
 
