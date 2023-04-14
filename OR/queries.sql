@@ -165,3 +165,22 @@ BEGIN
     professor.detail_user;
 END;
 /
+--dados do aluno que mais gastou dinheiro em cursos
+declare
+	aluno tp_usuario;
+begin
+
+    select value(a) into aluno from tb_aluno a where a.cpf = (SELECT deref(efc.aluno_ec).cpf
+                                                                FROM tb_efetuar_compra efc
+                                                                GROUP BY deref(efc.aluno_ec).cpf
+                                                                HAVING SUM(deref(efc.curso_ec).valor) = (
+                                                                  SELECT MAX(total)
+                                                                  FROM (
+                                                                    SELECT SUM(deref(efc2.curso_ec).valor) AS total, deref(efc2.aluno_ec).cpf AS cpf
+                                                                    FROM tb_efetuar_compra efc2
+                                                                    GROUP BY deref(efc2.aluno_ec).cpf
+                                                                  ) subquery
+                                                                ));
+
+	aluno.detail_user();
+end;
