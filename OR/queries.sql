@@ -140,3 +140,28 @@ BEGIN
     END;
 END;
 /
+
+----acha o curso que tem o minuto mais caro e printa os dados do professor
+DECLARE
+    professor tp_usuario;
+    total_min float;
+    minutes_price float;
+    max_minutes_price float := -1;
+BEGIN
+    FOR c IN (SELECT * FROM tb_curso) LOOP
+    
+        SELECT SUM(a.min_convert()) INTO total_min FROM TABLE (c.lista_aulas) a;
+
+        minutes_price := c.valor/total_min;
+
+        IF minutes_price > max_minutes_price THEN
+            max_minutes_price := minutes_price;
+
+			select value(e) into professor from tb_educador e where e.cpf = deref(c.educador).cpf;
+        END IF;
+
+    END LOOP;
+    
+    professor.detail_user;
+END;
+/
