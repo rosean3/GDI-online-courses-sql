@@ -117,7 +117,9 @@ BEGIN
     SELECT AVG(c.valor) INTO v_media_preco
     FROM tb_curso c
     WHERE DEREF(c.educador).cpf = p_cpf;
-    
+    IF v_media_preco IS NULL THEN
+        RETURN 0; 
+	END IF;
     RETURN v_media_preco;
 END;
 /
@@ -127,15 +129,15 @@ BEGIN
         v_media_preco NUMBER;
     BEGIN
 
-        FOR rec IN (SELECT E.cpf, COUNT(Ef.numero) AS count_numero
+        FOR rec IN (SELECT E.nome, E.cpf, COUNT(Ef.numero) AS count_numero
                     FROM tb_educador E
                     CROSS JOIN TABLE(E.lista_fones) Ef
-                    GROUP BY E.cpf
+                    GROUP BY E.cpf, E.nome
                     HAVING COUNT(Ef.numero) > 1)
         LOOP
     
         	v_media_preco := get_media_preco(rec.cpf);
-            DBMS_OUTPUT.PUT_LINE('Nome do Educador: ' || rec.cpf || ', Media de Preco dos Cursos: ' || v_media_preco);
+            DBMS_OUTPUT.PUT_LINE('Nome do Educador: ' || rec.nome || ' | CPF: '|| rec.cpf|| ', Media de Preco dos Cursos: ' || v_media_preco);
         END LOOP;
     END;
 END;

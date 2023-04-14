@@ -16,6 +16,8 @@ INSERT INTO tb_educador (cpf, nome, endereco, lista_fones) VALUES ('90399870064'
 
 INSERT INTO tb_educador (cpf, nome, endereco, lista_fones) VALUES ('18409941996', 'Marcelo', tp_usuario_endereco('Apartamento 1104', '77661341', 1), tp_usuario_fones(tp_usuario_fone('24587054865')));
 
+INSERT INTO tb_educador (cpf, nome, endereco, lista_fones) VALUES ('26409912996', 'Lenice', tp_usuario_endereco('Apartamento 212', '77641231', 1), tp_usuario_fones(tp_usuario_fone('39999054861'), tp_usuario_fone('99881991234')));
+
 
 --inserindo em tb_aluno
 
