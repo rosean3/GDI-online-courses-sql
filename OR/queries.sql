@@ -141,6 +141,52 @@ BEGIN
 END;
 /
 
+----acha o curso que tem o minuto mais caro e printa os dados do professor
+DECLARE
+    professor tp_usuario;
+    total_min float;
+    minutes_price float;
+    max_minutes_price float := -1;
+BEGIN
+    FOR c IN (SELECT * FROM tb_curso) LOOP
+    
+        SELECT SUM(a.min_convert()) INTO total_min FROM TABLE (c.lista_aulas) a;
+
+        minutes_price := c.valor/total_min;
+
+        IF minutes_price > max_minutes_price THEN
+            max_minutes_price := minutes_price;
+
+			select value(e) into professor from tb_educador e where e.cpf = deref(c.educador).cpf;
+        END IF;
+
+    END LOOP;
+    
+    professor.detail_user;
+END;
+/
+
+--dados do aluno que mais gastou dinheiro em cursos
+declare
+	aluno tp_usuario;
+begin
+
+    select value(a) into aluno from tb_aluno a where a.cpf = (SELECT deref(efc.aluno_ec).cpf
+                                                                FROM tb_efetuar_compra efc
+                                                                GROUP BY deref(efc.aluno_ec).cpf
+                                                                HAVING SUM(deref(efc.curso_ec).valor) = (
+                                                                  SELECT MAX(total)
+                                                                  FROM (
+                                                                    SELECT SUM(deref(efc2.curso_ec).valor) AS total, deref(efc2.aluno_ec).cpf AS cpf
+                                                                    FROM tb_efetuar_compra efc2
+                                                                    GROUP BY deref(efc2.aluno_ec).cpf
+                                                                  ) subquery
+                                                                ));
+
+	aluno.detail_user();
+end;
+
+
 --Consultar os telefones dos administradores que estão administrando pelo menos um curso
 
 DECLARE
