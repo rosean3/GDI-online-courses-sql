@@ -116,34 +116,64 @@ MODIFY ATTRIBUTE titulo varchar2(1000) CASCADE;
 create or replace type tp_lista_aulas as table of tp_aula;
 /
 
-create or replace type tp_curso as object(
-    id number,
-	titulo varchar2(300),
-    valor float,
-    descricao varchar2(4000),
-    lista_aulas tp_lista_aulas,
-
-    educador ref tp_educador, -- relacionamento publicar
-    administrador ref tp_administrador, -- relacionamento publicar
-    MAP MEMBER FUNCTION compareByPrice RETURN NUMBER,
-    final member procedure add_aula (num_da_aula int, titulo varchar2, duracao float)
-
+create or replace type tp_curso FORCE as object( 
+    id number, 
+	titulo varchar2(300), 
+    valor float, 
+    descricao varchar2(4000), 
+    lista_aulas tp_lista_aulas, 
+ 
+    educador ref tp_educador, -- relacionamento publicar 
+    administrador ref tp_administrador, -- relacionamento publicar 
+    MAP MEMBER FUNCTION compareByPrice RETURN NUMBER, 
+    final member procedure add_aula (num_da_aula int, titulo varchar2, duracao float), 
+ 	final member procedure remove_aula (num_da_aula int)
 );
 /
 
-CREATE OR REPLACE TYPE BODY tp_curso AS
-    MAP MEMBER FUNCTION compareByPrice RETURN NUMBER IS
-    BEGIN
-        RETURN valor;
-    END compareByPrice; 
-	
-    final member procedure add_aula (num_da_aula int, titulo varchar2, duracao float) is
-    BEGIN
-        lista_aulas.extend;
-        lista_aulas(lista_aulas.last) := tp_aula(num_da_aula, titulo, duracao);
-    END add_aula;
-END;
+CREATE OR REPLACE TYPE BODY tp_curso AS   
+    MAP MEMBER FUNCTION compareByPrice RETURN NUMBER IS     
+    BEGIN     
+        RETURN valor;     
+    END compareByPrice;      
+	     
+    final member procedure add_aula (num_da_aula int, titulo varchar2, duracao float) is     
+     	v_curso tp_curso := self;   
+    BEGIN   
+        v_curso.lista_aulas.extend();   
+        v_curso.lista_aulas(v_curso.lista_aulas.count) := tp_aula(num_da_aula, titulo, duracao);   
+        UPDATE tb_curso c SET c.lista_aulas = v_curso.lista_aulas WHERE c.id = v_curso.id;   
+    END add_aula; 
+ 
+    final member procedure remove_aula (num_da_aula int) is 
+        v_curso tp_curso := self; 
+    BEGIN 
+        FOR i IN 1..v_curso.lista_aulas.count LOOP 
+            IF v_curso.lista_aulas(i).num_da_aula = num_da_aula THEN 
+                v_curso.lista_aulas.delete(i); 
+                UPDATE tb_curso c SET c.lista_aulas = v_curso.lista_aulas WHERE c.id = v_curso.id;  
+                RETURN; 
+            END IF; 
+        END LOOP; 
+    END remove_aula; 
+END;  
 /
+
+-- DECLARE
+--   c tp_curso;
+-- BEGIN
+--   SELECT value(cu)
+--   INTO c
+--   FROM tb_curso cu
+--   WHERE cu.id = 1;
+
+--   c.remove_aula(6);
+-- END;
+-- /
+-- select a.*
+-- FROM tb_curso c, table(c.lista_aulas) a
+-- where c.id = 1;
+-- /
 
 create or replace type tp_efetuar_compra as object(
     id_ec int,

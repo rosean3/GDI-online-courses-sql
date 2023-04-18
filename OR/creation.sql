@@ -44,12 +44,12 @@ CREATE TABLE tb_presentear_curso of tp_presentear_curso(
 );
 /
 
-CREATE TABLE tb_assistir of tp_assistir(
-	id_as PRIMARY KEY,
-	aluno_as WITH ROWID REFERENCES tb_aluno
-    -- aula_as WITH ROWID REFERENCES tp_lista_aulas
-    -- tentar referenciar aula de algum jeito
-);
-/
+-- CREATE TABLE tb_assistir of tp_assistir(
+-- 	id_as PRIMARY KEY,
+-- 	aluno_as WITH ROWID REFERENCES tb_aluno
+--     -- aula_as WITH ROWID REFERENCES tp_lista_aulas
+--     -- tentar referenciar aula de algum jeito
+-- );
+-- /
 
 CREATE SEQUENCE efetuar_compra_seq START WITH 1 INCREMENT BY 1;
